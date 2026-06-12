@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Photoshop 2025 快捷键查询</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27><rect width=%2732%27 height=%2732%27 rx=%274%27 fill=%27%232a2a2a%27/><text x=%2716%27 y=%2722%27 font-size=%2716%27 font-weight=%27bold%27 fill=%27%232B7DE9%27 text-anchor=%27middle%27>Ps</text></svg>">
+<style>
+:root{--bg:#f5f5f7;--surface:#fff;--surface2:#f0f0f2;--border:#e0e0e4;--text:#1d1d1f;--text2:#8e8e93;--accent:#2B7DE9;--accent2:#1f5fc0;--accent-bg:rgba(43,125,233,.12);--radius:10px;--shadow:0 .5px 2px rgba(0,0,0,.06),0 1px 4px rgba(0,0,0,.04)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.header{background:linear-gradient(180deg,#0d1b2a 0%,#1b2d4a 100%);padding:0 0 10px 0;position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,.2)}
+.header-top{display:flex;align-items:center;gap:8px;padding:10px 14px 8px}
+.header-top h1{font-size:16px;font-weight:700;color:#fff;display:flex;align-items:center;gap:6px}
+.header-top h1 span{color:var(--accent)}
+.header-top .badge{font-size:10px;color:#98989d;background:rgba(255,255,255,.08);padding:1px 7px;border-radius:10px;margin-left:2px}
+.search-wrap{position:relative;margin:0 14px}
+.search-wrap .icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:#8e8e93;pointer-events:none}
+.search-bar{-webkit-appearance:none;appearance:none;width:100%;padding:9px 12px 9px 34px;border-radius:8px;border:1px solid #2a4a6e;background:#1a3a5e;color:#f5f5f7;font-size:15px;outline:none;transition:border .2s,background .2s}
+.search-bar::placeholder{color:#8e8e93;font-size:14px}
+.search-bar:focus{border-color:var(--accent);background:#0d2a48}
+.tabs{display:flex;gap:5px;overflow-x:auto;padding:8px 14px 4px;scrollbar-width:none;-ms-overflow-style:none;scroll-behavior:smooth;background:var(--bg)}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex-shrink:0;padding:6px 13px;border-radius:16px;border:1px solid var(--border);background:var(--surface);font-size:12px;cursor:pointer;transition:all .2s;color:var(--text2);white-space:nowrap;-webkit-user-select:none;user-select:none;touch-action:manipulation}
+.tab:active{transform:scale(.95)}
+.tab.active{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
+.tab .cnt{font-size:10px;opacity:.65;margin-left:3px}
+.stats{font-size:12px;color:var(--text2);padding:8px 14px 6px;display:flex;justify-content:space-between;align-items:center}
+.grid{display:flex;flex-direction:column;gap:5px;padding:0 12px 60px}
+.item{display:flex;align-items:flex-start;gap:10px;background:var(--surface);border-radius:var(--radius);padding:10px 12px;border:1px solid var(--border);cursor:default;transition:border .15s,box-shadow .15s,transform .1s;touch-action:manipulation;animation:fadeIn .18s ease-out}
+.item:active{transform:scale(.98)}
+.keys{display:flex;gap:3px;flex-wrap:wrap;flex-shrink:0;max-width:140px}
+.key{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:26px;padding:0 6px;background:linear-gradient(180deg,#2c2c2e 0%,#1d1d1f 100%);color:#f5f5f7;border-radius:4px;font-size:11px;font-weight:700;font-family:"SF Mono",Menlo,monospace;border-bottom:1.5px solid #000;letter-spacing:-.2px}
+.key.accent{background:linear-gradient(180deg,var(--accent) 0%,#1a55a0 100%);border-bottom-color:#123d75;color:#fff}
+.key.mod{font-size:9px;padding:0 4px;min-width:22px}
+.key.special{background:linear-gradient(180deg,#5a5a5e,#3a3a3c);border-bottom-color:#29292b;font-size:10px;min-width:22px}
+.desc{flex:1;min-width:0;font-size:13px;line-height:1.4}
+.detail{font-size:11px;color:var(--text2);margin-top:2px;line-height:1.3}
+.no-results{text-align:center;padding:60px 20px;color:var(--text2)}
+.no-results svg{width:40px;height:40px;margin-bottom:10px;opacity:.35}
+.bottom-bar{position:fixed;bottom:0;left:0;right:0;height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;background:rgba(245,245,247,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid var(--border);z-index:200}
+.bottom-bar .info{font-size:11px;color:var(--text2)}
+.bottom-btn{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:6px;border:none;background:var(--accent);color:#fff;font-size:12px;font-weight:600;cursor:pointer;touch-action:manipulation}
+.bottom-btn:active{opacity:.8}
+.bottom-btn svg{width:14px;height:14px}
+@media(prefers-color-scheme:dark){
+:root{--bg:#1c1c1e;--surface:#2c2c2e;--surface2:#3a3a3c;--border:#48484a;--text:#f5f5f7;--text2:#98989d;--accent-bg:rgba(43,125,233,.15);--shadow:0 .5px 2px rgba(0,0,0,.25),0 1px 4px rgba(0,0,0,.2)}
+.bottom-bar{background:rgba(28,28,30,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+}
+@keyframes fadeIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-top">
+    <h1><svg width="24" height="24" viewBox="0 0 32 32"><rect width="32" height="32" rx="5" fill="%232B7DE9"/><text x="10" y="22" font-size="13" font-weight="bold" fill="%23fff">Ps</text></svg>Photoshop <span>2025</span><span class="badge" id="totalBadge">0</span></h1>
+  </div>
+  <form class="search-wrap" id="searchForm" autocomplete="off">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input class="search-bar" id="searchInput" type="search" placeholder="搜索快捷键…" enterkeyhint="search">
+  </form>
+</div>
+<div class="tabs" id="tabsContainer"></div>
+<div class="stats"><span id="resultCount">全部</span></div>
+<div class="grid" id="grid"></div>
+<div class="no-results" id="noResults" style="display:none">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+  <div style="font-size:15px;font-weight:600;margin-bottom:3px">没有匹配的快捷键</div>
+  <div style="font-size:13px">换个关键词试试</div>
+</div>
+<div class="bottom-bar">
+  <span class="info" id="bottomInfo">全部</span>
+  <button class="bottom-btn" id="scrollTopBtn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+    顶部
+  </button>
+</div>
+<script>
+const D=[
+  // ── 文件操作 ──
+  {keys:["Ctrl","N"],desc:"新建文档",cat:"文件操作",detail:"创建新的空白文档"},
+  {keys:["Ctrl","O"],desc:"打开文件",cat:"文件操作",detail:"打开图像文件"},
+  {keys:["Ctrl","S"],desc:"保存",cat:"文件操作",detail:"保存当前文档"},
+  {keys:["Ctrl","Shift","S"],desc:"另存为",cat:"文件操作",detail:"将文档另存为新文件"},
+  {keys:["Ctrl","Alt","S"],desc:"保存副本",cat:"文件操作",detail:"另存一份副本"},
+  {keys:["Ctrl","W"],desc:"关闭文档",cat:"文件操作",detail:"关闭当前文档"},
+  {keys:["Ctrl","P"],desc:"打印",cat:"文件操作",detail:"打印当前文档"},
+  {keys:["F12"],desc:"恢复",cat:"文件操作",detail:"恢复到最后保存状态"},
+  {keys:["Ctrl","Alt","I"],desc:"图像大小",cat:"文件操作",detail:"调整图像尺寸和分辨率"},
+  {keys:["Ctrl","Alt","C"],desc:"画布大小",cat:"文件操作",detail:"调整画布尺寸"},
+  {keys:["Ctrl","K"],desc:"首选项",cat:"文件操作",detail:"打开Photoshop首选项"},
+  {keys:["Ctrl","Shift","P"],desc:"页面设置",cat:"文件操作",detail:"设置打印页面参数"},
+  {keys:["Ctrl","Q"],desc:"退出",cat:"文件操作",detail:"退出Photoshop"},
+
+  // ── 编辑操作 ──
+  {keys:["Ctrl","Z"],desc:"撤销/重做",cat:"编辑操作",detail:"撤销上一步 / 重做（切换）"},
+  {keys:["Ctrl","Alt","Z"],desc:"后退一步",cat:"编辑操作",detail:"多步后退"},
+  {keys:["Ctrl","Shift","Z"],desc:"前进一步",cat:"编辑操作",detail:"多步前进"},
+  {keys:["Ctrl","X"],desc:"剪切",cat:"编辑操作",detail:"剪切选定内容"},
+  {keys:["Ctrl","C"],desc:"复制",cat:"编辑操作",detail:"复制选定内容"},
+  {keys:["Ctrl","Shift","C"],desc:"合并复制",cat:"编辑操作",detail:"复制所有可见图层合并结果"},
+  {keys:["Ctrl","V"],desc:"粘贴",cat:"编辑操作",detail:"粘贴剪贴板内容"},
+  {keys:["Ctrl","Shift","V"],desc:"原位粘贴",cat:"编辑操作",detail:"粘贴内容到原始位置"},
+  {keys:["Ctrl","T"],desc:"自由变换",cat:"编辑操作",detail:"旋转/缩放/扭曲选定图层"},
+  {keys:["Ctrl","Shift","T"],desc:"再次变换",cat:"编辑操作",detail:"应用上次变换参数"},
+  {keys:["Ctrl","Alt","T"],desc:"复制变换",cat:"编辑操作",detail:"复制并进入自由变换"},
+  {keys:["Shift","F5"],desc:"填充",cat:"编辑操作",detail:"打开填充对话框"},
+  {keys:["Alt","Delete"],desc:"填充前景色",cat:"编辑操作",detail:"用前景色填充选区"},
+  {keys:["Ctrl","Delete"],desc:"填充背景色",cat:"编辑操作",detail:"用背景色填充选区"},
+  {keys:["Ctrl","Shift","X"],desc:"液化",cat:"编辑操作",detail:"打开液化滤镜窗口"},
+  {keys:["Ctrl","K"],desc:"首选项",cat:"编辑操作",detail:"打开首选项设置"},
+
+  // ── 选择操作 ──
+  {keys:["Ctrl","A"],desc:"全选",cat:"选择操作",detail:"选择整个画布"},
+  {keys:["Ctrl","D"],desc:"取消选择",cat:"选择操作",detail:"取消当前选区"},
+  {keys:["Ctrl","Shift","D"],desc:"重新选择",cat:"选择操作",detail:"恢复上次选区"},
+  {keys:["Ctrl","Shift","I"],desc:"反选",cat:"选择操作",detail:"反转选区范围"},
+  {keys:["Ctrl","Alt","D"],desc:"羽化",cat:"选择操作",detail:"对选区边缘进行羽化"},
+  {keys:["Ctrl","Shift","A"],desc:"选择并遮住",cat:"选择操作",detail:"打开选择并遮住工作区"},
+  {keys:["Q"],desc:"快速蒙版",cat:"选择操作",detail:"切换快速蒙版编辑模式"},
+  {keys:["Ctrl","J"],desc:"通过拷贝图层",cat:"选择操作",detail:"将选区复制到新图层"},
+
+  // ── 图层操作 ──
+  {keys:["Ctrl","J"],desc:"复制图层",cat:"图层操作",detail:"通过复制建立新图层"},
+  {keys:["Ctrl","Shift","J"],desc:"剪切图层",cat:"图层操作",detail:"通过剪切建立新图层"},
+  {keys:["Ctrl","G"],desc:"图层编组",cat:"图层操作",detail:"将选定图层编组"},
+  {keys:["Ctrl","Shift","G"],desc:"取消编组",cat:"图层操作",detail:"取消图层编组"},
+  {keys:["Ctrl","E"],desc:"合并图层",cat:"图层操作",detail:"向下合并或合并选定图层"},
+  {keys:["Ctrl","Shift","E"],desc:"合并可见",cat:"图层操作",detail:"合并所有可见图层"},
+  {keys:["Ctrl","Alt","Shift","E"],desc:"盖印可见",cat:"图层操作",detail:"合并可见图层为新图层"},
+  {keys:["Ctrl","]"],desc:"上移一层",cat:"图层操作",detail:"将图层上移一层"},
+  {keys:["Ctrl","["],desc:"下移一层",cat:"图层操作",detail:"将图层下移一层"},
+  {keys:["Ctrl","Shift","]"],desc:"置顶",cat:"图层操作",detail:"将图层移到最顶层"},
+  {keys:["Ctrl","Shift","["],desc:"置底",cat:"图层操作",detail:"将图层移到底层"},
+  {keys:["Ctrl","Shift","N"],desc:"新建图层",cat:"图层操作",detail:"创建新图层"},
+  {keys:["\\"],desc:"剪贴蒙版",cat:"图层操作",detail:"创建/释放剪贴蒙版"},
+  {keys:["/"],desc:"锁定透明",cat:"图层操作",detail:"锁定图层的透明像素"},
+  {keys:["Ctrl","Shift","U"],desc:"去色",cat:"图层操作",detail:"将图层转为黑白"},
+  {keys:["Ctrl","M"],desc:"曲线调整",cat:"图层操作",detail:"打开曲线调整面板"},
+
+  // ── 工具快捷键 ──
+  {keys:["V"],desc:"移动工具",cat:"工具快捷键",detail:"Move Tool - 移动选中的内容"},
+  {keys:["M"],desc:"选框工具",cat:"工具快捷键",detail:"Marquee - 矩形/椭圆选框"},
+  {keys:["L"],desc:"套索工具",cat:"工具快捷键",detail:"Lasso - 自由/多边形/磁性套索"},
+  {keys:["W"],desc:"魔棒工具",cat:"工具快捷键",detail:"Magic Wand - 快速选择/魔棒"},
+  {keys:["C"],desc:"裁剪工具",cat:"工具快捷键",detail:"Crop - 裁剪/透视裁剪"},
+  {keys:["B"],desc:"画笔工具",cat:"工具快捷键",detail:"Brush - 画笔/铅笔/颜色替换"},
+  {keys:["S"],desc:"仿制图章",cat:"工具快捷键",detail:"Clone Stamp - 仿制图章/图案图章"},
+  {keys:["Y"],desc:"历史记录画笔",cat:"工具快捷键",detail:"History Brush - 恢复原始状态"},
+  {keys:["E"],desc:"橡皮擦",cat:"工具快捷键",detail:"Eraser - 橡皮擦/背景橡皮擦/魔术橡皮擦"},
+  {keys:["G"],desc:"渐变工具",cat:"工具快捷键",detail:"Gradient - 渐变/油漆桶"},
+  {keys:["P"],desc:"钢笔工具",cat:"工具快捷键",detail:"Pen - 钢笔/自由钢笔等"},
+  {keys:["T"],desc:"文字工具",cat:"工具快捷键",detail:"Type - 横排/直排文字"},
+  {keys:["U"],desc:"形状工具",cat:"工具快捷键",detail:"Shape - 矩形/圆角/椭圆/多边形等"},
+  {keys:["H"],desc:"抓手工具",cat:"工具快捷键",detail:"Hand - 平移画布视图"},
+  {keys:["R"],desc:"旋转视图",cat:"工具快捷键",detail:"Rotate View - 旋转画布视图"},
+  {keys:["Z"],desc:"缩放工具",cat:"工具快捷键",detail:"Zoom - 放大/缩小视图"},
+  {keys:["I"],desc:"吸管工具",cat:"工具快捷键",detail:"Eyedropper - 吸取颜色/标尺/注释"},
+  {keys:["J"],desc:"污点修复画笔",cat:"工具快捷键",detail:"Spot Healing - 修复/补丁/红眼等"},
+  {keys:["O"],desc:"加深减淡",cat:"工具快捷键",detail:"Dodge/Burn - 减淡/加深/海绵"},
+  {keys:["A"],desc:"直接选择工具",cat:"工具快捷键",detail:"Direct Selection - 选择路径锚点"},
+  {keys:["X"],desc:"切换颜色",cat:"工具快捷键",detail:"交换前景色和背景色"},
+  {keys:["D"],desc:"默认颜色",cat:"工具快捷键",detail:"重置前景色为黑、背景色为白"},
+  {keys:["F"],desc:"屏幕模式",cat:"工具快捷键",detail:"循环切换屏幕显示模式"},
+  {keys:["Shift","B"],desc:"循环画笔",cat:"工具快捷键",detail:"在画笔工具组中循环切换"},
+
+  // ── 图像调整 ──
+  {keys:["Ctrl","L"],desc:"色阶",cat:"图像调整",detail:"Levels - 调整色阶亮度对比度"},
+  {keys:["Ctrl","Shift","L"],desc:"自动色阶",cat:"图像调整",detail:"自动调整色阶"},
+  {keys:["Ctrl","M"],desc:"曲线",cat:"图像调整",detail:"Curves - 调整曲线"},
+  {keys:["Ctrl","B"],desc:"色彩平衡",cat:"图像调整",detail:"Color Balance - 调整颜色"},
+  {keys:["Ctrl","U"],desc:"色相/饱和度",cat:"图像调整",detail:"Hue/Saturation - 调整色相和饱和度"},
+  {keys:["Ctrl","Shift","U"],desc:"去色",cat:"图像调整",detail:"Desaturate - 转换为灰度"},
+  {keys:["Ctrl","I"],desc:"反相",cat:"图像调整",detail:"Invert - 颜色反相"},
+  {keys:["Ctrl","Shift","I"],desc:"反选",cat:"图像调整",detail:"反选选区"},
+  {keys:["Ctrl","Alt","Shift","B"],desc:"黑白",cat:"图像调整",detail:"Black & White - 黑白转换"},
+  {keys:["Ctrl","Alt","Shift","L"],desc:"自动对比度",cat:"图像调整",detail:"Auto Contrast"},
+  {keys:["Ctrl","Shift","Alt","U"],desc:"自动颜色",cat:"图像调整",detail:"Auto Color"},
+  {keys:["Ctrl","Alt","G"],desc:"创建剪贴蒙版",cat:"图像调整",detail:"Create Clipping Mask"},
+
+  // ── 滤镜 ──
+  {keys:["Ctrl","F"],desc:"重复滤镜",cat:"滤镜",detail:"重复上一次使用的滤镜"},
+  {keys:["Ctrl","Alt","F"],desc:"滤镜对话框",cat:"滤镜",detail:"打开上次滤镜的参数对话框"},
+  {keys:["Ctrl","Shift","F"],desc:"渐隐",cat:"滤镜",detail:"Fade - 调整滤镜透明度"},
+  {keys:["Ctrl","Shift","X"],desc:"液化",cat:"滤镜",detail:"打开液化滤镜"},
+  {keys:["Ctrl","Shift","A"],desc:"Camera Raw滤镜",cat:"滤镜",detail:"打开Camera Raw滤镜"},
+  {keys:["Ctrl","Alt","V"],desc:"消失点",cat:"滤镜",detail:"Vanishing Point - 透视编辑"},
+  {keys:["Ctrl","Shift","R"],desc:"镜头校正",cat:"滤镜",detail:"Lens Correction - 校正镜头畸变"},
+  {keys:["Ctrl","Shift","Alt","E"],desc:"盖印滤镜",cat:"滤镜",detail:"盖印可见图层作为新图层"},
+
+  // ── 视图控制 ──
+  {keys:["Ctrl","+"],desc:"放大",cat:"视图控制",detail:"放大视图显示比例"},
+  {keys:["Ctrl","-"],desc:"缩小",cat:"视图控制",detail:"缩小视图显示比例"},
+  {keys:["Ctrl","0"],desc:"适合屏幕",cat:"视图控制",detail:"按屏幕大小缩放"},
+  {keys:["Ctrl","1"],desc:"实际像素",cat:"视图控制",detail:"100% 实际大小显示"},
+  {keys:["Ctrl","H"],desc:"显示额外内容",cat:"视图控制",detail:"切换选区/路径/网格等显示"},
+  {keys:["Ctrl","'"],desc:"显示网格",cat:"视图控制",detail:"切换参考网格显示"},
+  {keys:["Ctrl",";"],desc:"显示参考线",cat:"视图控制",detail:"切换参考线显示"},
+  {keys:["Ctrl","R"],desc:"标尺",cat:"视图控制",detail:"显示/隐藏标尺"},
+  {keys:["Tab"],desc:"隐藏面板",cat:"视图控制",detail:"隐藏所有面板全屏显示"},
+  {keys:["Shift","Tab"],desc:"隐藏右侧面板",cat:"视图控制",detail:"仅隐藏右侧面板"},
+  {keys:["Ctrl","Space","点击"],desc:"临时放大",cat:"视图控制",detail:"Ctrl+空格+点击临时放大",m:true},
+  {keys:["Ctrl","Alt","Space","点击"],desc:"临时缩小",cat:"视图控制",detail:"临时缩小视图",m:true},
+  {keys:["F"],desc:"屏幕模式",cat:"视图控制",detail:"循环标准/全屏/黑底屏幕模式"},
+
+  // ── 文字工具 ──
+  {keys:["Ctrl","Shift","L"],desc:"左对齐",cat:"文字工具",detail:"段落文字左对齐"},
+  {keys:["Ctrl","Shift","C"],desc:"居中对齐",cat:"文字工具",detail:"段落文字居中对齐"},
+  {keys:["Ctrl","Shift","R"],desc:"右对齐",cat:"文字工具",detail:"段落文字右对齐"},
+  {keys:["Ctrl","Shift",">"],desc:"增大字号",cat:"文字工具",detail:"增大选定文字字号"},
+  {keys:["Ctrl","Shift","<"],desc:"减小字号",cat:"文字工具",detail:"减小选定文字字号"},
+  {keys:["Ctrl","Shift","B"],desc:"加粗",cat:"文字工具",detail:"切换文字粗体样式"},
+  {keys:["Ctrl","Shift","I"],desc:"斜体",cat:"文字工具",detail:"切换文字斜体样式"},
+  {keys:["Ctrl","Shift","U"],desc:"下划线",cat:"文字工具",detail:"切换文字下划线"},
+  {keys:["Ctrl","Shift","K"],desc:"全部大写",cat:"文字工具",detail:"切换全部大写字母"},
+  {keys:["Alt","左/右"],desc:"字距微调",cat:"文字工具",detail:"Alt+方向键调整字距"},
+  {keys:["Alt","上/下"],desc:"行距调整",cat:"文字工具",detail:"Alt+方向键调整行距"},
+  {keys:["Enter","(数字键盘)"],desc:"确认文字",cat:"文字工具",detail:"确认当前文字编辑"},
+  {keys:["Escape"],desc:"取消文字",cat:"文字工具",detail:"取消当前文字编辑"},
+
+  // ── 面板与窗口 ──
+  {keys:["F7"],desc:"图层面板",cat:"面板与窗口",detail:"显示/隐藏图层面板"},
+  {keys:["F8"],desc:"信息面板",cat:"面板与窗口",detail:"显示/隐藏信息面板"},
+  {keys:["F5"],desc:"笔画面板",cat:"面板与窗口",detail:"显示/隐藏笔刷设置面板"},
+  {keys:["F6"],desc:"颜色面板",cat:"面板与窗口",detail:"显示/隐藏颜色面板"},
+  {keys:["Alt","F9"],desc:"动作面板",cat:"面板与窗口",detail:"显示/隐藏动作面板"},
+  {keys:["Ctrl","F9"],desc:"历史记录",cat:"面板与窗口",detail:"显示/隐藏历史记录面板"},
+  {keys:["Ctrl","2"],desc:"通道面板",cat:"面板与窗口",detail:"显示/隐藏通道面板"},
+  {keys:["Ctrl","L"],desc:"调整面板",cat:"面板与窗口",detail:"显示/隐藏调整面板"},
+];
+let A="全部",Q="";
+const C=[...new Set(D.map(s=>s.cat))].sort((a,b)=>D.filter(x=>x.cat===b).length-D.filter(x=>x.cat===a).length);
+function rK(k,m){if(k==="点击")return `<span class="key special">${k}</span>`;let c="key";if(k==="Ctrl"||k==="Shift"||k==="Alt")c+=" mod";else if(k==="Space"||k==="Tab"||k==="Home"||k==="End"||k==="Delete"||k==="Backspace"||k==="Enter"||k==="Escape")c+=" accent";else if(m)c+=" accent";return `<span class="${c}">${k}</span>`}
+function rI(s){return `<div class="item"><div class="keys">${s.keys.map(k=>rK(k,s.keys.length>1)).join("")}</div><div class="desc">${s.desc}<div class="detail">${s.detail||""}</div></div></div>`}
+function rA(){const g=document.getElementById("grid"),n=document.getElementById("noResults"),r=document.getElementById("resultCount"),b=document.getElementById("bottomInfo");let i=D;A!=="全部"&&(i=i.filter(s=>s.cat===A));if(Q.trim()){const q=Q.trim().toLowerCase();i=i.filter(s=>(s.desc+" "+s.keys.join(" ")+" "+(s.detail||"")).toLowerCase().includes(q))}g.innerHTML=i.map(rI).join("");n.style.display=i.length?"none":"block";const t=A==="全部"?`共 ${i.length} 条`:`${A} · ${i.length} 条`;r.textContent=t;b.textContent=t}
+function rT(){const c=document.getElementById("tabsContainer"),ac=D.length;let h=`<div class="tab${A==="全部"?" active":""}" data-cat="全部">全部<span class="cnt">${ac}</span></div>`;C.forEach(cat=>{const cnt=D.filter(s=>s.cat===cat).length;h+=`<div class="tab${A===cat?" active":""}" data-cat="${cat}">${cat}<span class="cnt">${cnt}</span></div>`});c.innerHTML=h;c.querySelectorAll(".tab").forEach(el=>{el.addEventListener("click",()=>{A=el.dataset.cat;rT();rA()})})}
+document.getElementById("totalBadge").textContent=D.length;
+const si=document.getElementById("searchInput");si.addEventListener("input",()=>{Q=si.value;rA()});document.getElementById("searchForm").addEventListener("submit",e=>e.preventDefault());
+document.getElementById("scrollTopBtn").addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+rT();rA();
+</script>
+</body>
+</html>
